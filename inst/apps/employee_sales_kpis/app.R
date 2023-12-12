@@ -7,6 +7,20 @@
 #    http://shiny.rstudio.com/
 #
 
+library(shiny)
+library(shinydashboard)
+library(shinydashboardPlus)
+library(shinyWidgets)
+library(shinycssloaders)
+library(data.table)
+library(stringr)
+library(ggplot2)
+library(ggthemes)
+library(ggpubr)
+library(scales)
+library(lubridate)
+library(rblogapps)
+
 # UI ------------------------------------------------------------------------------------------
 
 cat_choices <- list(
@@ -214,7 +228,7 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
 
     ## Get app data and update first required selection box
-    appdata <- rblogapps::getAppData("employee_sales_kpis")
+    appdata <- getAppData("employee_sales_kpis")
 
     observe({
         updateSelectInput(
@@ -254,6 +268,9 @@ server <- function(input, output, session) {
         r_ordersDT()[store == req(input$facility_selection)]
     })
 
+    ## Export test data
+    exportTestValues(r_store_orders = r_store_orders())
+
     ## Set box titles and labels where needed
     ##
     output$box_label_1 <- renderUI({
@@ -286,22 +303,31 @@ server <- function(input, output, session) {
 
     ## Get first reactive result. Note this function returns a list
     ##
-    r_ll_1 <- reactive({
+    r_sales_per_day <- reactive({
         plotSalesPerDay(r_store_orders())
     })
-    r_ll_2 <- reactive({
+    r_sales_per_hour <- reactive({
         plotSalesPerHour(r_store_orders(), req(input$category_selection))
     })
-    r_ll_3 <- reactive({
-        getHighLowStats(r_ll_1()$data)
+    r_high_low_stats <- reactive({
+        getHighLowStats(r_sales_per_day()$data)
     })
+
+    ## Export test data
+    exportTestValues(
+        r_sales_per_day  = r_sales_per_day(),
+        r_sales_per_hour = r_sales_per_hour(),
+        r_high_low_stats = r_high_low_stats()
+    )
 
     ## Set the value boxes describing average performance by group
     ##
     output$ibx_cat_sphr_high <- renderValueBox({
-        req(r_ll_2(), input$category_selection)
         valueBox(
-            value = r_ll_2()$summ[category4 == input$category_selection, Top],
+            value = req(r_sales_per_hour())$summ[
+                category2 == req(input$category_selection),
+                Top
+            ],
             subtitle = "Top Performing Budtenders",
             icon = shiny::icon("dollar-sign"),
             color = "green",
@@ -312,8 +338,8 @@ server <- function(input, output, session) {
 
     output$ibx_cat_sphr_mid <- renderInfoBox({
         valueBox(
-            value = r_ll_2()$summ[
-                category4 == req(input$category_selection),
+            value = req(r_sales_per_hour())$summ[
+                category2 == req(input$category_selection),
                 Middle
             ],
             subtitle = "Mid Performing Budtenders",
@@ -326,8 +352,8 @@ server <- function(input, output, session) {
 
     output$ibx_cat_sphr_low <- renderInfoBox({
         valueBox(
-            value = r_ll_2()$summ[
-                category4 == req(input$category_selection),
+            value = req(r_sales_per_hour())$summ[
+                category2 == req(input$category_selection),
                 Low
             ],
             subtitle = "Low Performing Budtenders",
@@ -342,17 +368,19 @@ server <- function(input, output, session) {
     ##
     output$impact_analysis_ui <- renderUI({
 
+        SPH <- req(r_sales_per_hour())
+
         ## budtenders identified
-        n_bdrs <- r_ll_2()$n_low
+        n_bdrs <- SPH$n_low
 
         ## training impact on category velocity
-        tr_imp <- r_ll_2()$impact$target_training_impact
+        tr_imp <- SPH$impact$target_training_impact
 
         ## training impact on revenue velocity
-        vt_imp <- r_ll_2()$impact$pct_sales_per_hour_gain
+        vt_imp <- SPH$impact$pct_sales_per_hour_gain
 
         ## training impact on revenue per day
-        sd_imp <- r_ll_2()$impact$est_sales_per_day_impact
+        sd_imp <- SPH$impact$est_sales_per_day_impact
 
         boxPad(
             fluidRow(
@@ -410,15 +438,15 @@ server <- function(input, output, session) {
 
     output$ui_perf_overall <- renderUI({
 
+        HLS <- req(r_high_low_stats())
+
         ## ave sales per day
-        ##
-        spd_top <- r_ll_3()$overall[perf_group == "ave_sales_pday", Top]
-        spd_low <- r_ll_3()$overall[perf_group == "ave_sales_pday", Low]
+        spd_top <- HLS$overall[perf_group == "ave_sales_pday", Top]
+        spd_low <- HLS$overall[perf_group == "ave_sales_pday", Low]
 
         ## ave units per day
-        ##
-        upd_top <- r_ll_3()$overall[perf_group == "ave_units_pday", Top]
-        upd_low <- r_ll_3()$overall[perf_group == "ave_units_pday", Low]
+        upd_top <- HLS$overall[perf_group == "ave_units_pday", Top]
+        upd_low <- HLS$overall[perf_group == "ave_units_pday", Low]
 
         fluidRow(
             column(
@@ -488,7 +516,9 @@ server <- function(input, output, session) {
     ##
     output$ui_perf_cats_1 <- renderUI({
 
-        opd_cats_top <- r_ll_3()$category$ordersPerDay[order(category)]
+        HLS <- req(r_high_low_stats())
+
+        opd_cats_top <- HLS$category$ordersPerDay[order(category)]
 
         ll_db_high <- tagList(
             descriptionBlock(
@@ -520,7 +550,9 @@ server <- function(input, output, session) {
     ##
     output$ui_perf_cats_2 <- renderUI({
 
-        osz_cats_top <- r_ll_3()$category$ticketSize[order(category)]
+        HLS <- req(r_high_low_stats())
+
+        osz_cats_top <- HLS$category$ticketSize[order(category)]
 
         ll_db_high <- tagList(
             descriptionBlock(
@@ -548,13 +580,8 @@ server <- function(input, output, session) {
         )
     })
 
-    r_p_sales_day <- reactive(req(r_ll_1())$plot)
-
-    r_p_sales_hr <- reactive(req(r_ll_2())$plot)
-
-    r_p_staff_perf <- reactive({
-
-        employDT <- r_ordersDT()[, .(
+    r_employ_summary <- reactive({
+        req(r_ordersDT())[, .(
             orders = length(unique(order_id)),
             units = sum(units_sold),
             sales = sum(sub_total)
@@ -565,24 +592,31 @@ server <- function(input, output, session) {
             order_hour = lubridate::hour(order_utc),
             category
         )][, sales_per_unit := sales / units][]
+    })
 
+    r_plot_staff_perf <- reactive({
         plotBdrPerformance(
-            employDT,
+            req(r_employ_summary()),
             req(input$facility_selection),
             req(input$bdr_selection)
         )
     })
 
+    exportTestValues(
+        r_employ_summary = r_employ_summary(),
+        r_plot_staff_perf = r_plot_staff_perf()
+    )
+
     ## Set the plot ui elements
     ##
     output$plot_sales_per_day <- renderPlot(res = 75, height = 1000, {
-        r_p_sales_day()
+        r_sales_per_day()$plot
     })
     output$plot_sales_per_hour <- renderPlot(res = 75, height = 1000, {
-        r_p_sales_hr()
+        r_sales_per_hour()$plot
     })
     output$plot_bdr_performance <- renderPlot(res = 75, height = 1000, {
-        r_p_staff_perf()
+        r_plot_staff_perf()
     })
 }
 

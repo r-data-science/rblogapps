@@ -1,0 +1,45 @@
+{
+  "input": {
+    "bdr_selection": "Alexandrea D",
+    "category_selection": "FLOWER",
+    "facility_selection": "Camarillo, CA",
+    "foo1": {
+      "collapsible": false,
+      "collapsed": false,
+      "closable": false,
+      "visible": true,
+      "solidHeader": true,
+      "width": 12,
+      "height": "100px"
+    },
+    "foo2": {
+      "collapsible": false,
+      "collapsed": false,
+      "closable": false,
+      "visible": true,
+      "solidHeader": true,
+      "width": 6,
+      "height": "100px"
+    },
+    "foo3": {
+      "collapsible": false,
+      "collapsed": false,
+      "closable": false,
+      "visible": true,
+      "solidHeader": true,
+      "width": 6,
+      "height": "100px"
+    },
+    "foo4": {
+      "collapsible": false,
+      "collapsed": false,
+      "closable": false,
+      "visible": true,
+      "solidHeader": true,
+      "width": 12
+    },
+    "org_selection": "Org 130",
+    "sidebarCollapsed": false,
+    "sidebarItemExpanded": "SelectOrg"
+  }
+}

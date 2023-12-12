@@ -7,3 +7,4 @@
 ^R/_dev$
 _\.new\.png$
 ^.dockerignore$
+_\.new\.png$

@@ -16,7 +16,7 @@ NULL
 #' @examples
 #' list_app_names()
 list_app_names <- function() {
-  fs::path_package("rblogapps", "shiny-apps") |>
+  fs::path_package("rblogapps", "apps") |>
     fs::dir_ls(type = "directory") |>
     fs::path_file()
 }
@@ -83,5 +83,5 @@ is_app_valid <- function(name) {
 
 #' @describeIn pkg-utils Get directory of package app
 get_app_dir <- function(name) {
-  fs::path_package("rblogapps", "shiny-apps", name)
+  fs::path_package("rblogapps", "apps", name)
 }

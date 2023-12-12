@@ -47,3 +47,5 @@ po/*~
 
 .Rprofile
 tests/testthat/bin
+# {shinytest2}: Ignore new debug snapshots for `$expect_values()`
+*_.new.png
