@@ -228,7 +228,7 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
 
     ## Get app data and update first required selection box
-    appdata <- getAppData("employee_sales_kpis")
+    appdata <- getBlogData("employee_sales_kpis")
 
     observe({
         updateSelectInput(

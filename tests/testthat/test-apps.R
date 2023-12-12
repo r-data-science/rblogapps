@@ -1,4 +1,8 @@
-# File: tests/testthat/test-inst-apps.R
+# Unit Tests For File: <No corresponding {pkg}/R/*.R File>
+#
+# Locally Testing of Shiny Apps
+# ---------------------------------------------------------
+
 library(shinytest2)
 
 test_that("Testing all package apps", {

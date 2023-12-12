@@ -5,31 +5,52 @@
 [![R-CMD-check](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml)
 [![codecov](https://codecov.io/gh/r-data-science/rblogapps/graph/badge.svg?token=4gg0ETS2w5)](https://codecov.io/gh/r-data-science/rblogapps)
-[![test-shiny-apps](https://github.com/r-data-science/rblogapps/actions/workflows/test-shiny-apps.yaml/badge.svg)](https://github.com/r-data-science/rblogapps/actions/workflows/test-shiny-apps.yaml)
+[![Shiny-Apps](https://github.com/r-data-science/rblogapps/actions/workflows/test-shiny-apps.yaml/badge.svg)](https://github.com/r-data-science/rblogapps/actions/workflows/test-shiny-apps.yaml)
 <!-- badges: end -->
-
-
-## Package Structure
-
-```         
-
-```
 
 ------------------------------------------------------------------------
 
-## Install & Run App
+## About
 
-#### In R Session
+This package includes all apps assiocated with the r-data-science blog. Additionally, package includes the primary app datasets.
 
-This package exports a single R function that launches the packaged
-shiny app:
+The three functions exported by this package are as follows:
+
+`listBlogApps()`: Retrieves names of all apps included in this package
+
+`runBlogApp(name)`: Run an app included in this package given it's name
+
+`getBlogData(name)`: Returns an apps primary dataset given it's name
+
+------------------------------------------------------------------------
+
+## Examples
+
+#### Install Package
+
+```
+remotes::install_github("r-data-science/rblogapps")
+```
+
+#### List Package Apps
+
+```
+rblogapps::listBlogApps()
+```
+
+#### Launch Package App
 
 ``` r
-# remotes::install_github("r-data-science/rblogapps")
 rblogapps::runBlogApps("employee_sales_kpis")
 ```
 
-#### In Docker Container
+#### View App Dataset
+
+``` r
+rblogapps::getBlogData("employee_sales_kpis")
+```
+
+## Deployment
 
 To run this as a docker container, perform the following bash commands:
 

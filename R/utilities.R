@@ -1,43 +1,59 @@
 #' Utilities to Run Package Apps
 #'
-#' Functions used to faciliate launching package apps
+#' Helper functions used to faciliate launching package apps or running
+#' unit tests included in this package
 #'
 #' @param name Name of app bundled in package
+#' @param path path to description file
+#' @param type type of deps to retrieve defaults to c("Imports", "Suggests")
 #'
 #' @importFrom fs path_package dir_ls path_file
 #' @importFrom remotes local_package_deps
-#' @importFrom stringr str_flatten_comma
+#' @importFrom stringr str_flatten_comma str_split str_extract
 #'
-#' @name pkg-utils
+#' @name utilities
 NULL
 
 
-#' @describeIn pkg-utils List the names of all apps in the package
+#' @describeIn utilities List the names of all apps in this package
 #' @export
 #'
 #' @examples
-#' list_app_names()
-list_app_names <- function() {
+#' listBlogApps()
+#'
+listBlogApps <- function() {
   fs::path_package("rblogapps", "apps") |>
     fs::dir_ls(type = "directory") |>
     fs::path_file()
 }
 
 
-
-#' @describeIn pkg-utils List all dependencies for a package shiny app
-#' @export
-#'
-#' @examples
-#' list_app_deps("employee_sales_kpis")
-list_app_deps <- function(name) {
-  is_app_valid(name) |>
-    get_app_dir() |>
-    remotes::local_package_deps()
+#' @describeIn utilities Reads dependencies declared in description files
+read_desc_deps <- function(path, type = c("Imports", "Suggests")) {
+  read.dcf(path, type) |>
+    stringr::str_split("\\,\\n") |>
+    unlist() |>
+    stringr::str_extract("[A-Za-z0-9\\.]+")
 }
 
 
-#' @describeIn pkg-utils error if app depends not found
+#' @describeIn utilities List all dependencies for an app in this package
+list_app_deps <- function(name) {
+  is_app_valid(name) |>
+    get_app_dir() |>
+    fs::path("DESCRIPTION") |>
+    read_desc_deps("Imports")
+}
+
+
+#' @describeIn utilities List all dependencies declared in this package
+list_pkg_deps <- function() {
+  fs::path_package("rblogapps", "DESCRIPTION") |>
+    read_desc_deps()
+}
+
+
+#' @describeIn utilities Show error if app dependencies not found
 has_app_deps <- function(name) {
   message("*---- Checking Required Packages ----*")
   nf_pkgs <- nf_package_deps(name)
@@ -46,7 +62,8 @@ has_app_deps <- function(name) {
   invisible(name)
 }
 
-#' @describeIn pkg-utils Get list of app dependencies that are not found
+
+#' @describeIn utilities Get list of app's R package depends that are not found
 nf_package_deps <- function(name) {
   list_app_deps(name) |>
     lapply(function(x) {
@@ -58,7 +75,8 @@ nf_package_deps <- function(name) {
     unlist()
 }
 
-#' @describeIn pkg-utils Show not found package dependencies error
+
+#' @describeIn utilities Show 'package dependencies not found' error
 stop_nf_depends <- function(nf_pkgs) {
   stop(
     "\nDependencies missing: ",
@@ -67,11 +85,12 @@ stop_nf_depends <- function(nf_pkgs) {
   )
 }
 
-#' @describeIn pkg-utils Validates the name of package app
+
+#' @describeIn utilities Show error if given name is not a valid package app
 is_app_valid <- function(name) {
 
   # locate all the shiny app examples that exist
-  valid_apps <- list_app_names()
+  valid_apps <- listBlogApps()
 
   valid_apps_msg <- paste0(
     "Valid apps are: '",
@@ -90,19 +109,19 @@ is_app_valid <- function(name) {
 }
 
 
-#' @describeIn pkg-utils Get directory of package app
+#' @describeIn utilities Get directory of an app included in this package
 get_app_dir <- function(name) {
   fs::path_package("rblogapps", "apps", name)
 }
 
 
-#' @describeIn pkg-utils returns TRUE if called on CI
+#' @describeIn utilities returns TRUE if called on CI
 is_ci <- function() {
   isTRUE(as.logical(Sys.getenv("CI", "false")))
 }
 
 
-#' @describeIn pkg-utils returns TRUE if called while testing
+#' @describeIn utilities returns TRUE if called while unit testing
 is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
 }

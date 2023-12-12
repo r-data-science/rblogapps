@@ -1,8 +1,10 @@
-#' Launch Package Shiny Apps
+#' Launch Package Apps
 #'
-#' @param name Name of app included in package. Lookup with \code{list_app_names()}
+#' @param name Name of app included in package. Lookup with \code{listBlogApps()}
 #'
-#' @importFrom shiny runApp
+#' @importFrom shiny runApp as.shiny.appobj
+#'
+#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -15,6 +17,7 @@ runBlogApp <- function(name) {
   app <- has_app_deps(name) |>
     get_app_dir() |>
     shiny::as.shiny.appobj()
-  if (is_testing()) return(app)
+  if (is_testing())
+    return(app)
   runApp(app)
 }

@@ -1,3 +1,6 @@
+# Unit Tests For File: {pkg}/R/runBlogApp.R
+# ---------------------------------------------------------
+
 test_that("Test Run App", {
   runBlogApp("fdksjf") |>
     expect_error()

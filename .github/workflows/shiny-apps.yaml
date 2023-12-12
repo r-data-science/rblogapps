@@ -6,10 +6,10 @@ on:
   pull_request:
     branches: [main]
 
-name: test-apps
+name: shiny-apps
 
 jobs:
-  test-apps:
+  shiny-apps:
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
