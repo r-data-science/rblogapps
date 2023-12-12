@@ -1,6 +1,6 @@
 Package: rblogapps
 Title: Apps Featured in Blog
-Version: 0.0.1
+Version: 0.0.4
 Authors@R: 
   person(
     given = "Bobby", 
@@ -36,4 +36,5 @@ Suggests:
   lubridate,
   shinytest2,
   withr,
+  vdiffr,
   testthat (>= 3.0.0)
