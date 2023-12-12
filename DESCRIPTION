@@ -1,6 +1,6 @@
-Package: apptemplate1
-Title: Template Single-App Package
-Version: 0.9.8
+Package: rblogapps
+Title: Apps Featured in Blog
+Version: 0.0.1
 Authors@R: 
   person(
     given = "Bobby", 
@@ -8,33 +8,31 @@ Authors@R:
     role = c("aut", "cre"), 
     email = "bfatemi07@gmail.com"
   )
-Description: Template for a shiny app built as R package, 
-  with full coverage/CI unit testing of App and package.
+Description: Apps that are featured in my r-data-science blog.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
-URL: https://github.com/r-data-science/apptemplate1
-BugReports: https://github.com/r-data-science/apptemplate1/issues
+URL: https://github.com/r-data-science/rblogapps
+BugReports: https://github.com/r-data-science/rblogapps/issues
 Config/testthat/edition: 3
 Imports:
-  rdstools,
-  shiny,
+    fs,
+    shiny,
+    remotes,
+    stringr,
+    data.table
+Depends: 
+  R (>= 4.0)
+Suggests:
+  shinydashboard,
+  shinydashboardPlus,
   shinyWidgets,
   shinycssloaders,
   ggplot2,
-  ggtext,
-  bslib,
-  waiter,
-  fs,
-  stringr,
-  data.table,
-  rmarkdown
-Remotes:
-  git@github.com:r-data-science/rdstools.git
-Depends: 
-  R (>= 4.0)
-Suggests: 
+  ggthemes,
+  ggpubr,
+  scales,
+  lubridate,
   shinytest2,
-  covr,
   testthat (>= 3.0.0)
