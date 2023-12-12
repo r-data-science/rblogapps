@@ -4,6 +4,7 @@
 
 [![R-CMD-check](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml)
+[![codecov](https://codecov.io/gh/r-data-science/rblogapps/graph/badge.svg?token=4gg0ETS2w5)](https://codecov.io/gh/r-data-science/rblogapps)
 
 <!-- badges: end -->
 
@@ -25,9 +26,7 @@ shiny app:
 
 ``` r
 # remotes::install_github("r-data-science/rblogapps")
-
-rblogapps::list_blog_apps()[1] |> 
-  rblogapps::rdsRunApp()
+rblogapps::runBlogApps("employee_sales_kpis")
 ```
 
 #### In Docker Container
