@@ -1,6 +1,6 @@
 #' App Utilities
 #'
-#' Functions used across all package apps
+#' Functions used by all package apps.
 #'
 #' @param name app name
 #'

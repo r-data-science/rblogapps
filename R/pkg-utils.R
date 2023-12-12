@@ -1,5 +1,7 @@
 #' Utilities to Run Package Apps
 #'
+#' Functions used to faciliate launching package apps
+#'
 #' @param name Name of app bundled in package
 #'
 #' @importFrom fs path_package dir_ls path_file
@@ -35,10 +37,18 @@ list_app_deps <- function(name) {
 }
 
 
-#' @describeIn pkg-utils Get list of app dependencies that are not found
+#' @describeIn pkg-utils error if app depends not found
 has_app_deps <- function(name) {
   message("*---- Checking Required Packages ----*")
-  nf_pkgs <- list_app_deps(name) |>
+  nf_pkgs <- nf_package_deps(name)
+  if (length(nf_pkgs) > 0) stop_nf_depends(nf_pkgs)
+  message(".........SUCCESS!")
+  invisible(name)
+}
+
+#' @describeIn pkg-utils Get list of app dependencies that are not found
+nf_package_deps <- function(name) {
+  list_app_deps(name) |>
     lapply(function(x) {
       ck <- requireNamespace(x, quietly = TRUE)
       if (ck)
@@ -46,17 +56,16 @@ has_app_deps <- function(name) {
       return(x)
     }) |>
     unlist()
-  if (length(nf_pkgs) > 0) {
-    stop(
-      "\nDependencies missing: ",
-      stringr::str_flatten_comma(nf_pkgs),
-      call. = FALSE
-    )
-  }
-  message(".........SUCCESS!")
-  invisible(name)
 }
 
+#' @describeIn pkg-utils Show not found package dependencies error
+stop_nf_depends <- function(nf_pkgs) {
+  stop(
+    "\nDependencies missing: ",
+    stringr::str_flatten_comma(nf_pkgs),
+    call. = FALSE
+  )
+}
 
 #' @describeIn pkg-utils Validates the name of package app
 is_app_valid <- function(name) {
@@ -84,4 +93,16 @@ is_app_valid <- function(name) {
 #' @describeIn pkg-utils Get directory of package app
 get_app_dir <- function(name) {
   fs::path_package("rblogapps", "apps", name)
+}
+
+
+#' @describeIn pkg-utils returns TRUE if called on CI
+is_ci <- function() {
+  isTRUE(as.logical(Sys.getenv("CI", "false")))
+}
+
+
+#' @describeIn pkg-utils returns TRUE if called while testing
+is_testing <- function() {
+  identical(Sys.getenv("TESTTHAT"), "true")
 }

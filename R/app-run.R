@@ -10,9 +10,11 @@
 #' }
 #'
 runBlogApp <- function(name) {
-  app_dir <- has_app_deps(name) |>
-    get_app_dir()
   for (pkg in list_app_deps(name))
     try(attachNamespace(pkg), silent = TRUE)
-  shiny::runApp(app_dir)
+  app <- has_app_deps(name) |>
+    get_app_dir() |>
+    shiny::as.shiny.appobj()
+  if (is_testing()) return(app)
+  runApp(app)
 }
