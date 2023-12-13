@@ -11,16 +11,14 @@ name: ssh-verify
 jobs:
   test_gh_to_do_ssh:
 
-  name: test gh to do ssh connection
+    runs-on: ubuntu-latest
 
-  runs-on: ubuntu-latest
+    steps:
 
-  steps:
-
-    - name: Create a dummy file on server
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: folsom.redirectme.net
-        username: ghactions
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: touch github-actions-made-this-file
+      - name: Create a dummy file on server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: folsom.redirectme.net
+          username: ghactions
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: touch github-actions-made-this-file
