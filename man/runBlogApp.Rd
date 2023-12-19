@@ -15,6 +15,8 @@ Launch Package Apps
 \examples{
 \dontrun{
 runBlogApp(name = "employee_sales_kpis")
+runBlogApp(name = "house_brands_kpis")
+runBlogApp(name = "stockout_sales_impact")
 }
 
 }

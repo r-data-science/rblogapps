@@ -1,0 +1,82 @@
+{
+  "input": {
+    "args_table_cell_clicked": {
+
+    },
+    "args_table_cells_selected": [
+
+    ],
+    "args_table_columns_selected": null,
+    "args_table_rows_all": [
+      1,
+      2,
+      3
+    ],
+    "args_table_rows_current": [
+      1,
+      2,
+      3
+    ],
+    "args_table_rows_selected": null,
+    "args_table_search": "",
+    "args_table_state": {
+      "start": 0,
+      "length": 10,
+      "order": [
+
+      ],
+      "search": {
+        "search": "",
+        "smart": true,
+        "regex": false,
+        "caseInsensitive": true
+      },
+      "columns": [
+        {
+          "visible": true,
+          "search": {
+            "search": "",
+            "smart": true,
+            "regex": false,
+            "caseInsensitive": true
+          }
+        },
+        {
+          "visible": true,
+          "search": {
+            "search": "",
+            "smart": true,
+            "regex": false,
+            "caseInsensitive": true
+          }
+        },
+        {
+          "visible": true,
+          "search": {
+            "search": "",
+            "smart": true,
+            "regex": false,
+            "caseInsensitive": true
+          }
+        },
+        {
+          "visible": true,
+          "search": {
+            "search": "",
+            "smart": true,
+            "regex": false,
+            "caseInsensitive": true
+          }
+        }
+      ]
+    },
+    "eval": 0,
+    "my-filters-brand_name": null,
+    "my-filters-category": "Edibles",
+    "my-filters-product_sku": null,
+    "my-filters-reset_all": 0,
+    "my-filters-store": "Florence-Graham, CA",
+    "org": "Org 1",
+    "tabset1": null
+  }
+}

@@ -21,20 +21,28 @@ Imports:
     shiny,
     remotes,
     stringr,
-    data.table
+    data.table,
+    config,
+    utils
 Depends: 
   R (>= 4.0)
 Suggests:
-  shinydashboard,
-  shinydashboardPlus,
-  shinyWidgets,
-  shinycssloaders,
-  ggplot2,
-  ggthemes,
-  ggpubr,
-  scales,
-  lubridate,
-  shinytest2,
-  withr,
-  vdiffr,
-  testthat (>= 3.0.0)
+    shinydashboard,
+    shinydashboardPlus,
+    shinyWidgets,
+    shinycssloaders,
+    ggplot2,
+    ggthemes,
+    ggpubr,
+    scales,
+    lubridate,
+    shinytest2,
+    withr,
+    vdiffr,
+    testthat (>= 3.0.0),
+    shinyjs,
+    bs4Dash,
+    ggtext,
+    datamods,
+    DT,
+    magick

@@ -1,0 +1,20 @@
+Title: Revenue Impact of Product Stockouts
+Author: Bobby Fatemi
+Type: Shiny
+Version: 0.1
+Imports:
+  shiny,
+  shinyjs,
+  shinyWidgets,
+  bs4Dash,
+  ggplot2,
+  ggthemes,
+  ggtext,
+  datamods,
+  DT,
+  data.table,
+  stringr,
+  scales,
+  fs,
+  magick
+DisplayMode: Normal

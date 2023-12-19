@@ -3,6 +3,7 @@
 \name{utilities}
 \alias{utilities}
 \alias{listBlogApps}
+\alias{listBlogData}
 \alias{read_desc_deps}
 \alias{list_app_deps}
 \alias{list_pkg_deps}
@@ -17,7 +18,9 @@
 \usage{
 listBlogApps()
 
-read_desc_deps(path, type = c("Imports", "Suggests"))
+listBlogData()
+
+read_desc_deps(path)
 
 list_app_deps(name)
 
@@ -40,9 +43,9 @@ is_testing()
 \arguments{
 \item{path}{path to description file}
 
-\item{type}{type of deps to retrieve defaults to c("Imports", "Suggests")}
-
 \item{name}{Name of app bundled in package}
+
+\item{nf_pkgs}{vector of not found package dependencies}
 }
 \description{
 Helper functions used to faciliate launching package apps or running
@@ -51,6 +54,8 @@ unit tests included in this package
 \section{Functions}{
 \itemize{
 \item \code{listBlogApps()}: List the names of all apps in this package
+
+\item \code{listBlogData()}: List the names of all app datasets in this package
 
 \item \code{read_desc_deps()}: Reads dependencies declared in description files
 
@@ -75,5 +80,7 @@ unit tests included in this package
 }}
 \examples{
 listBlogApps()
+
+listBlogData()
 
 }

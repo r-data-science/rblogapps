@@ -13,7 +13,9 @@
 #'
 #' @examples
 #' getBlogData("employee_sales_kpis")
+#' getBlogData("house_brands_kpis")
+#' getBlogData("stockout_sales_impact")
 #'
-getBlogData <- function(name = "employee_sales_kpis") {
-  as.data.table(get(is_app_valid(name)))
+getBlogData <- function(name) {
+  as.data.table(base::get(is_app_valid(name)))
 }

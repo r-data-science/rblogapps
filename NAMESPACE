@@ -2,7 +2,9 @@
 
 export(getBlogData)
 export(listBlogApps)
+export(listBlogData)
 export(runBlogApp)
+importFrom(config,get)
 importFrom(data.table,as.data.table)
 importFrom(fs,dir_ls)
 importFrom(fs,path_file)

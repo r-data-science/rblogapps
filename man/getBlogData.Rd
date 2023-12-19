@@ -4,7 +4,7 @@
 \alias{getBlogData}
 \title{Get App Dataset}
 \usage{
-getBlogData(name = "employee_sales_kpis")
+getBlogData(name)
 }
 \arguments{
 \item{name}{app name}
@@ -17,5 +17,7 @@ in this package
 }
 \examples{
 getBlogData("employee_sales_kpis")
+getBlogData("house_brands_kpis")
+getBlogData("stockout_sales_impact")
 
 }

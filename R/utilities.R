@@ -5,7 +5,7 @@
 #'
 #' @param name Name of app bundled in package
 #' @param path path to description file
-#' @param type type of deps to retrieve defaults to c("Imports", "Suggests")
+#' @param nf_pkgs vector of not found package dependencies
 #'
 #' @importFrom fs path_package dir_ls path_file
 #' @importFrom remotes local_package_deps
@@ -24,14 +24,36 @@ NULL
 listBlogApps <- function() {
   fs::path_package("rblogapps", "apps") |>
     fs::dir_ls(type = "directory") |>
-    fs::path_file()
+    fs::path_file() |>
+    sort()
 }
 
 
+#' @describeIn utilities List the names of all app datasets in this package
+#' @export
+#'
+#' @examples
+#' listBlogData()
+#'
+listBlogData <- function() {
+  if (is_testing()) {
+    x <- utils::data(package = "rblogapps")
+    sort(x$results[, 3])
+  } else {
+    fs::path_package("rblogapps", "data") |>
+      fs::dir_ls(glob = "*.rds") |>
+      readRDS() |>
+      names() |>
+      sort()
+  }
+}
+
+
+
 #' @describeIn utilities Reads dependencies declared in description files
-read_desc_deps <- function(path, type = c("Imports", "Suggests")) {
-  read.dcf(path, type) |>
-    stringr::str_split("\\,\\n") |>
+read_desc_deps <- function(path) {
+  read.dcf(path, c("Imports", "Suggests")) |>
+    stringr::str_split("\\,\\n?") |>
     unlist() |>
     stringr::str_extract("[A-Za-z0-9\\.]+")
 }
@@ -39,10 +61,11 @@ read_desc_deps <- function(path, type = c("Imports", "Suggests")) {
 
 #' @describeIn utilities List all dependencies for an app in this package
 list_app_deps <- function(name) {
-  is_app_valid(name) |>
+  x <- is_app_valid(name) |>
     get_app_dir() |>
     fs::path("DESCRIPTION") |>
-    read_desc_deps("Imports")
+    read_desc_deps()
+  x[!is.na(x)]
 }
 
 

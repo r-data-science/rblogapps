@@ -8,8 +8,8 @@
 ## `employee_sales_kpis`
 A data table with 60,502 rows and 14 columns.
 \describe{
-  \item{org}{Anonomized Org Name}
-  \item{store}{Anonomized Retail Location}
+  \item{org}{Anonymized Org Name}
+  \item{store}{Anonymized Retail Location}
   \item{order_utc}{Timestamp associated with an order}
   \item{employee}{Name of employee that facilitated order}
   \item{order_id}{Random ID associated with an order}
@@ -25,7 +25,7 @@ A data table with 60,502 rows and 14 columns.
 }
 }
 \source{
-<Anonomized Proprietary Data>
+<Anonymized Proprietary Data>
 }
 \usage{
 employee_sales_kpis

@@ -51,41 +51,6 @@ orgIndexAnon <- function() {
   ), keyby = org_uuid]
 }
 
-gen_random_name <- function(n = 1) {
-  first_name <- randomNames::randomNames(n = n, which.names = "first")
-  last_initial <- sample(LETTERS, n, replace = TRUE)
-  stringr::str_glue('{first_name} {last_initial}')
-}
-
-sample_us_cities <- function(n = 1, us_state = NULL) {
-  data_url <- "https://github.com/r-data-science/corpora/blob/master/data"
-
-  # Get cities dataset from gh
-  DT <- fs::path(data_url, "geography/us_cities.json") |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_string() |>
-    jsonlite::fromJSON() |>
-    (function(x) x$payload$blob$rawLines)() |>
-    stringr::str_flatten() |>
-    jsonlite::fromJSON() |>
-    (function(x) data.table::setDT(x$cities)[])() |>
-    data.table::setkeyv("state")
-
-  # Get index of all states to join in abbreviations
-  index <- data.table::data.table(state = state.name, abb = state.abb) |>
-    data.table::setkeyv("state")
-
-  # Filter index if user provided states
-  if (!is.null(us_state))
-    index <- index[.(match.arg(us_state, state.name, several.ok = TRUE))]
-
-  # Join on cities data, create location name, and sample
-  DT[index, paste0(city,  ", ", abb)] |>
-    sample(n, replace = FALSE)
-}
-
-
 
 # Function to build app datasets ------------------------------------------
 
@@ -142,7 +107,7 @@ build_appdata <- function(oid, anon = TRUE) {
 
   if (anon) {
     ##
-    ## Anonomize Org, Store and Employee Names
+    ## Anonymize Org, Store and Employee Names
     ##
     anon_org <- orgIndexAnon()[org_uuid == oid, short_name]
 
@@ -154,13 +119,13 @@ build_appdata <- function(oid, anon = TRUE) {
     emp_map <- salesDT[, .N, keyby = sold_by][, !"N"]
     emp_map[, anon := gen_random_name(.N)]
 
-    ## Anonomize retail store names
+    ## Anonymize retail store names
     setkeyv(loc_map, "order_facility")
     setkeyv(salesDT, "order_facility")
 
     salesDT[loc_map, order_facility := anon]
 
-    ## Anonomize store employee names
+    ## Anonymize store employee names
     setkeyv(emp_map, "sold_by")
     setkeyv(salesDT, "sold_by")
 

@@ -8,3 +8,5 @@
 _\.new\.png$
 ^.dockerignore$
 _\.new\.png$
+^Dockerfile$
+^\.dockerignore$

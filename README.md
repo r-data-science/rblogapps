@@ -32,22 +32,27 @@ The three functions exported by this package are as follows:
 remotes::install_github("r-data-science/rblogapps")
 ```
 
-#### List Package Apps
+#### List Package Apps and Datasets
 
 ```
 rblogapps::listBlogApps()
+rblogapps::listBlogData()
 ```
 
 #### Launch Package App
 
 ``` r
-rblogapps::runBlogApps("employee_sales_kpis")
-```
+rblogapps::runBlogApp("employee_sales_kpis")
+rblogapps::runBlogApp("house_brands_kpis")
+rblogapps::runBlogApp("stockout_sales_impact")
+``` 
 
-#### View App Dataset
+#### See App Dataset
 
 ``` r
 rblogapps::getBlogData("employee_sales_kpis")
+rblogapps::getBlogData("house_brands_kpis")
+rblogapps::getBlogData("stockout_sales_impact")
 ```
 
 ## Deployment

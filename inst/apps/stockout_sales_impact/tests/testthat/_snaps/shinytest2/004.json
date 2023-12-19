@@ -1,0 +1,132 @@
+{
+  "output": {
+    "plot_data": {
+      "x": {
+        "style": "bootstrap",
+        "filter": "none",
+        "vertical": false,
+        "fillContainer": true,
+        "container": "<table class=\"table table-striped table-hover row-border order-column display fill-container\">\n  <thead>\n    <tr>\n      <th>Date<\/th>\n      <th>Units Sold<\/th>\n      <th>Discount<\/th>\n      <th>Ave Ticket<\/th>\n      <th>Actual<\/th>\n      <th>Expected<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
+        "options": {
+          "dom": "tp",
+          "lengthChange": true,
+          "lengthMenu": [
+            10,
+            20,
+            50
+          ],
+          "pageLength": 10,
+          "initComplete": "function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#fff', 'color': '#000'});\n}",
+          "columnDefs": [
+            {
+              "className": "dt-right",
+              "targets": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "name": " ",
+              "targets": 0
+            },
+            {
+              "name": "period_units_sold",
+              "targets": 1
+            },
+            {
+              "name": "ave_disc_r",
+              "targets": 2
+            },
+            {
+              "name": "ave_ticket",
+              "targets": 3
+            },
+            {
+              "name": "c_sales_actual",
+              "targets": 4
+            },
+            {
+              "name": "c_sales_est",
+              "targets": 5
+            }
+          ],
+          "order": [
+
+          ],
+          "autoWidth": false,
+          "orderClasses": false,
+          "ajax": {
+            "type": "POST",
+            "data": "function(d) {\nd.search.caseInsensitive = true;\nd.search.smart = true;\nd.escape = true;\nvar encodeAmp = function(x) { x.value = x.value.replace(/&/g, \"%26\"); }\nencodeAmp(d.search);\n$.each(d.columns, function(i, v) {encodeAmp(v.search);});\n}"
+          },
+          "serverSide": true,
+          "processing": true
+        },
+        "selection": {
+          "mode": "single",
+          "selected": null,
+          "target": "row",
+          "selectable": null
+        }
+      },
+      "evals": [
+        "options.initComplete",
+        "options.ajax.data"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "jquery",
+          "version": "3.6.0",
+          "src": {
+            "href": "jquery-3.6.0"
+          },
+          "meta": null,
+          "script": "jquery-3.6.0.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "dt-core-bootstrap",
+          "version": "1.13.6",
+          "src": {
+            "href": "dt-core-bootstrap-1.13.6"
+          },
+          "meta": null,
+          "script": [
+            "js/jquery.dataTables.min.js",
+            "js/dataTables.bootstrap.min.js"
+          ],
+          "stylesheet": [
+            "css/dataTables.bootstrap.min.css",
+            "css/dataTables.bootstrap.extra.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.2.1",
+          "src": {
+            "href": "crosstalk-1.2.1"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.min.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    }
+  }
+}

@@ -5,10 +5,13 @@ test_that("Package Utilities", {
 
   expect_error(is_app_valid("fkasdjfs"))
 
-  app_name <- "employee_sales_kpis"
   listBlogApps() |>
     expect_no_error()
 
+  listBlogData() |>
+    expect_no_error()
+
+  app_name <- "employee_sales_kpis"
   list_app_deps(app_name) |>
     expect_snapshot()
 
@@ -58,8 +61,9 @@ test_that("Testing Package Dependency Declarations", {
   pkg_deps <- list_pkg_deps() |>
     expect_no_error()
 
-  for (i in listBlogApps()) {
-    list_app_deps(i) |>
-      expect_in(pkg_deps)
+  for (app in listBlogApps()) {
+    print(paste0("Testing dependendies for: ", app))
+    expect_in(list_app_deps(app), pkg_deps)
   }
+
 })
