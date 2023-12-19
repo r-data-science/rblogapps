@@ -18,7 +18,7 @@ jobs:
       - name: Create a dummy file on server
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: folsom.redirectme.net
+          host: rdatablog.com
           username: ghactions
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: touch github-actions-made-this-file
