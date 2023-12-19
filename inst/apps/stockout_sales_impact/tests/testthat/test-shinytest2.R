@@ -3,7 +3,8 @@ library(vdiffr)
 
 
 test_that("{shinytest2} recording: stockout_sales_impact", {
-  app <- AppDriver$new( load_timeout = 35000)
+  app <- AppDriver$new( load_timeout = 35000 )
+  app$wait_for_idle(1000)
 
   app$expect_values(input = TRUE)
 
