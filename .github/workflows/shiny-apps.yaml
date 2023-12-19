@@ -52,3 +52,4 @@ jobs:
             inst/apps/employee_sales_kpis
             inst/apps/house_brands_kpis
             inst/apps/stockout_sales_impact
+            inst/apps/event_impact_kpis

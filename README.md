@@ -45,6 +45,7 @@ rblogapps::listBlogData()
 rblogapps::runBlogApp("employee_sales_kpis")
 rblogapps::runBlogApp("house_brands_kpis")
 rblogapps::runBlogApp("stockout_sales_impact")
+rblogapps::runBlogApp("event_impact_kpis")
 ``` 
 
 #### See App Dataset
@@ -53,6 +54,7 @@ rblogapps::runBlogApp("stockout_sales_impact")
 rblogapps::getBlogData("employee_sales_kpis")
 rblogapps::getBlogData("house_brands_kpis")
 rblogapps::getBlogData("stockout_sales_impact")
+rblogapps::getBlogData("event_impact_kpis")
 ```
 
 ## Deployment

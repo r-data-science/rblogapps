@@ -1,0 +1,18 @@
+Title: Event Impact Analysis
+Author: Bobby Fatemi
+Type: Shiny
+Version: 0.1
+Imports:
+  data.table,
+  lubridate,
+  stringr,
+  scales,
+  ggplot2,
+  ggthemes,
+  shiny,
+  shinydashboard,
+  shinydashboardPlus,
+  shinycssloaders,
+  shinyWidgets
+DisplayMode: Normal
+  

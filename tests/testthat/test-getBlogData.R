@@ -43,6 +43,10 @@ test_that("Testing Dataset - stockout_sales_impact", {
   expect_data(getBlogData("stockout_sales_impact"))
 })
 
+test_that("Testing Dataset - event_impact_kpis", {
+  expect_data(getBlogData("event_impact_kpis"))
+})
+
 
 
 # Confirm All Datasets Have Been Tested -----------------------------------

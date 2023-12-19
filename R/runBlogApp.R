@@ -8,9 +8,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' runBlogApp(name = "employee_sales_kpis")
-#' runBlogApp(name = "house_brands_kpis")
-#' runBlogApp(name = "stockout_sales_impact")
+#' runBlogApp("employee_sales_kpis")
+#' runBlogApp("house_brands_kpis")
+#' runBlogApp("stockout_sales_impact")
+#' runBlogApp("event_impact_kpis")
 #' }
 #'
 runBlogApp <- function(name) {

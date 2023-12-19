@@ -22,3 +22,11 @@
       "value": ["org", "store", "product_sku", "order_date", "category", "brand_name", "tot_sales", "units_sold", "has_sales", "period_units_sold", "period_tot_sales", "ave_disc_r", "ave_ticket", "wts", "tot_sales_est", "c_sales_est", "c_sales_actual"]
     }
 
+# Testing Dataset - event_impact_kpis
+
+    {
+      "type": "character",
+      "attributes": {},
+      "value": ["org", "store", "is_post_event", "mon_date", "ave_disc_rate", "n_uniq_products", "n_uniq_brands", "n_uniq_customers", "pct_retail_sales", "pct_retail_units", "total_orders", "total_units", "total_sales", "sales_per_order", "month_id"]
+    }
+

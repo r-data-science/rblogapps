@@ -76,3 +76,35 @@
 #' }
 #' @source <Anonymized Proprietary Data>
 "stockout_sales_impact"
+
+
+
+#' Event Impact Analysis
+#'
+#' Dataset is primary appdata for app event_impact_kpis which is included
+#' in this package. This data is used to explore the impact across various
+#' business success metrics, with a comparison of KPIs before and after some
+#' business or operational event.
+#'
+#' @format ## `event_impact_kpis`
+#' A data.table with 1360 rows and 15 columns.
+#' \describe{
+#'   \item{org}{[factor] Anonymized Retailer Name}
+#'   \item{store}{[character] Anonymized Retail Location}
+#'   \item{is_post_event}{[logical] Whether an monthly observation (row) occurs after the event}
+#'   \item{mon_date}{[POSIXct] month start date}
+#'   \item{ave_disc_rate}{[numeric] average discount rate in month}
+#'   \item{n_uniq_products}{[integer] number of unique products sold in month}
+#'   \item{n_uniq_brands}{[integer] number of unique brands sold in month}
+#'   \item{n_uniq_customers}{[integer] number of distinct customers with purchases in month}
+#'   \item{pct_retail_sales}{[numeric] percent of total sales dollars that were retail orders (vs. delivery)}
+#'   \item{pct_retail_units}{[numeric] percent of total units sold that were retail orders (vs. delivery)}
+#'   \item{total_orders}{[integer] total orders in month}
+#'   \item{total_units}{[numeric] total units sold in month}
+#'   \item{total_sales}{[numeric] total sales dollars generated in month}
+#'   \item{sales_per_order}{[numeric] average ticket size in month}
+#'   \item{month_id}{[integer] an index identifying the month (negative means prior to event, positive means post event)}
+#' }
+#' @source <Anonymized Proprietary Data
+"event_impact_kpis"
+

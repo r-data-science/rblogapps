@@ -10,4 +10,6 @@ test_that("Test Run App", {
     expect_s3_class("shiny.appobj")
   runBlogApp("stockout_sales_impact") |>
     expect_s3_class("shiny.appobj")
+  runBlogApp("event_impact_kpis") |>
+    expect_s3_class("shiny.appobj")
 })
