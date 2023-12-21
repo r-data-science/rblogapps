@@ -1,4 +1,5 @@
-# rblogapps
+# rblogapps <img src="man/figures/logo.png" align="right" height="120" alt="" />
+
 
 <!-- badges: start -->
 
