@@ -19,5 +19,6 @@ in this package
 getBlogData("employee_sales_kpis")
 getBlogData("house_brands_kpis")
 getBlogData("stockout_sales_impact")
+getBlogData("event_impact_kpis")
 
 }

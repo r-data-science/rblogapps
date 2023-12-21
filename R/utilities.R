@@ -36,16 +36,10 @@ listBlogApps <- function() {
 #' listBlogData()
 #'
 listBlogData <- function() {
-  if (is_testing()) {
-    x <- utils::data(package = "rblogapps")
-    sort(x$results[, 3])
-  } else {
-    fs::path_package("rblogapps", "data") |>
-      fs::dir_ls(glob = "*.rds") |>
-      readRDS() |>
-      names() |>
-      sort()
-  }
+  dpath <- fs::path_package("rblogapps", "data")
+  if (!is_testing())
+    return(sort(names(readRDS(fs::dir_ls(dpath, glob = "*.rds")))))
+  return(sort(utils::data(package = "rblogapps")$results[, 3]))
 }
 
 
@@ -88,14 +82,11 @@ has_app_deps <- function(name) {
 
 #' @describeIn utilities Get list of app's R package depends that are not found
 nf_package_deps <- function(name) {
-  list_app_deps(name) |>
-    lapply(function(x) {
-      ck <- requireNamespace(x, quietly = TRUE)
-      if (ck)
-        return(NULL)
-      return(x)
-    }) |>
-    unlist()
+  unlist(lapply(list_app_deps(name), function(x) {
+    if (requireNamespace(x, quietly = TRUE))
+      return(NULL)
+    return(x)
+  }))
 }
 
 

@@ -1,6 +1,6 @@
 Package: rblogapps
 Title: Apps Featured in Blog
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: 
   person(
     given = "Bobby", 
@@ -22,7 +22,6 @@ Imports:
     remotes,
     stringr,
     data.table,
-    config,
     utils
 Depends: 
   R (>= 4.0)
