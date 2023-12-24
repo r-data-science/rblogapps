@@ -57,15 +57,15 @@ get_store_stat_summary_ui <- function(stat_ll, y) {
       pct_delta <- scales::percent(ifelse(is.infinite(val_delta), i$post_value, val_delta))
 
       ## if value of kpi after < before then set appropriate colors, else set the reverse
-      prior_number_color <- "green"
-      after_number_color <- "red"
-      delta_number_color <- "red"
+      prior_number_color <- "success"
+      after_number_color <- "danger"
+      delta_number_color <- "danger"
       delta_number_icon <- "caret-down"
 
       if (i$post_value > i$prior_value) {
-        prior_number_color <- "red"
-        after_number_color <- "green"
-        delta_number_color <- "green"
+        prior_number_color <- "danger"
+        after_number_color <- "success"
+        delta_number_color <- "success"
         delta_number_icon <- "caret-up"
       }
 
@@ -135,14 +135,14 @@ get_org_stat_summary_ui <- function(stat_ll, y) {
   pct_delta <- scales::percent(ifelse(is.infinite(val_delta), after_val, val_delta))
 
   ## if value of kpi after < before then set appropriate colors, else set the reverse
-  prior_number_color <- "green"
-  after_number_color <- "red"
-  delta_number_color <- "red"
+  prior_number_color <- "success"
+  after_number_color <- "danger"
+  delta_number_color <- "danger"
   delta_number_icon <- "caret-down"
   if (after_val > prior_val) {
-    prior_number_color <- "red"
-    after_number_color <- "green"
-    delta_number_color <- "green"
+    prior_number_color <- "danger"
+    after_number_color <- "success"
+    delta_number_color <- "success"
     delta_number_icon <- "caret-up"
   }
 

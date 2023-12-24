@@ -7,7 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 library(shiny)
-library(shinydashboard)
+library(shinydashboardPlus)
 library(data.table)
 library(stringr)
 library(ggplot2)

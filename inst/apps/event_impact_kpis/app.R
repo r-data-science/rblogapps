@@ -24,6 +24,9 @@ library(rblogapps)
 ui <- dashboardPage(
     header = dashboardHeader(title = "Event Impact Comparison"),
     sidebar = dashboardSidebar(
+        width = 400,
+        collapsed = FALSE,
+        fixed = TRUE,
         selectInput("org_selection",
                     label = NULL,
                     choices = get_orgs(),
@@ -38,8 +41,9 @@ ui <- dashboardPage(
     body = dashboardBody(
         fluidRow(
             box(
+                collapsible = FALSE,
                 id = "bxstat",
-                width = 8,
+                width = 10,
                 status = "primary",
                 label = prettyToggle(
                     inputId = "facet_plot",
