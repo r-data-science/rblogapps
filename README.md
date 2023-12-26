@@ -58,7 +58,7 @@ The app containers will be launched and listening on ports 4201-4205:
 
 Visit these links in your browser to interact with the apps:
 
--   [http://localhost:4201](http://localhost:4201/)
+-   [http://localhost:4201/](http://localhost:4201/)
 -   [http://localhost:4202/](http://localhost:4201/)
 -   [http://localhost:4203/](http://localhost:4201/)
 -   [http://localhost:4204/](http://localhost:4201/)
