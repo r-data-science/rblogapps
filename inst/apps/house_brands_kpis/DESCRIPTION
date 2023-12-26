@@ -5,6 +5,7 @@ Version: 0.1
 Imports:
   shiny,
   shinydashboard,
+  shinydashboardPlus,
   data.table,
   stringr,
   ggplot2,

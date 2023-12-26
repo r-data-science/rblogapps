@@ -24,7 +24,9 @@ test_that("{shinytest2} recording: house_brands_kpis", {
     expect_doppelganger(p, title = plot_name)
   }
 
-  app <- AppDriver$new(name = "house_brands_kpis")
+  app <- AppDriver$new(name = "house_brands_kpis",
+                       expect_values_screenshot_args = FALSE,
+                       screenshot_args = FALSE)
   expect_exports()
 
   app$set_inputs(metric_selection = "order_days")

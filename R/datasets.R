@@ -108,3 +108,25 @@
 #' @source <Anonymized Proprietary Data
 "event_impact_kpis"
 
+
+
+#' Compare Brand Training Impact
+#'
+#' Dataset is primary appdata for app compare_brand_impact which is included
+#' in this package. This data is used to evaluate the impact that employee
+#' brand training has on retail sales.
+#'
+#' @format ## `compare_brand_impact`
+#' A data.table with 344,933 rows and 8 columns.
+#' \describe{
+#'   \item{org}{[factor] Anonymized Retailer Name}
+#'   \item{order_id}{[character] Anonymized Order Id}
+#'   \item{order_subtot}{Subtotal of all items sold in an order}
+#'   \item{order_date}{Date of the order}
+#'   \item{item_discount}{discount in dollars applied to the order line item}
+#'   \item{item_subtotal}{Subtotal for an order line item}
+#'   \item{brand_name}{brand name for order line item sold}
+#'   \item{category}{product category for the order line item sold}
+#' }
+#' @source <Anonymized Proprietary Data
+"compare_brand_impact"

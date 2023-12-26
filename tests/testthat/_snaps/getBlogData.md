@@ -30,3 +30,11 @@
       "value": ["org", "store", "is_post_event", "mon_date", "ave_disc_rate", "n_uniq_products", "n_uniq_brands", "n_uniq_customers", "pct_retail_sales", "pct_retail_units", "total_orders", "total_units", "total_sales", "sales_per_order", "month_id"]
     }
 
+# Testing Dataset - compare_brand_impact
+
+    {
+      "type": "character",
+      "attributes": {},
+      "value": ["org", "order_id", "order_subtot", "order_date", "item_discount", "item_subtotal", "brand_name", "category"]
+    }
+
