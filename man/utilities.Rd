@@ -2,6 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{utilities}
 \alias{utilities}
+\alias{lookupAppIds}
 \alias{listBlogApps}
 \alias{listBlogData}
 \alias{read_desc_deps}
@@ -16,6 +17,8 @@
 \alias{is_testing}
 \title{Utilities to Run Package Apps}
 \usage{
+lookupAppIds()
+
 listBlogApps()
 
 listBlogData()
@@ -53,6 +56,8 @@ unit tests included in this package
 }
 \section{Functions}{
 \itemize{
+\item \code{lookupAppIds()}: returns a mapping between apps names and ids
+
 \item \code{listBlogApps()}: List the names of all apps in this package
 
 \item \code{listBlogData()}: List the names of all app datasets in this package
@@ -79,6 +84,8 @@ unit tests included in this package
 
 }}
 \examples{
+lookupAppIds()
+
 listBlogApps()
 
 listBlogData()
