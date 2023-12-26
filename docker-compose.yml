@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+  app-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: stockout_sales_impact
+    image: bfatemi/stockout_sales_impact:latest
+    container_name: appStockoutSalesImpact
+    ports:
+      - 4201:4201
+  app-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: house_brands_kpis
+    image: bfatemi/house_brands_kpis:latest
+    container_name: appHouseBrandsKpis
+    ports:
+      - 4202:4202
+  app-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: event_impact_kpis
+    image: bfatemi/event_impact_kpis:latest
+    container_name: appEventImpactKpis
+    ports:
+      - 4203:4203
+  app-4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: employee_sales_kpis
+    image: bfatemi/employee_sales_kpis:latest
+    container_name: appEmployeeSalesKpis
+    ports:
+      - 4204:4204
+  app-5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: compare_brand_impact
+    image: bfatemi/compare_brand_impact:latest
+    container_name: appCompareBrandImpact
+    ports:
+      - 4205:4205

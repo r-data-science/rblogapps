@@ -1,5 +1,4 @@
-# rblogapps <img src="man/figures/logo.png" align="right" height="120" alt="" />
-
+# rblogapps <img src="man/figures/logo.png" align="right" height="120"/>
 
 <!-- badges: start -->
 
@@ -7,15 +6,67 @@
 [![test-coverage](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml)
 [![codecov](https://codecov.io/gh/r-data-science/rnnblogapps/graph/badge.svg?token=4gg0ETS2w5)](https://codecov.io/gh/r-data-science/rblogapps)
 [![shiny-apps](https://github.com/r-data-science/rblogapps/actions/workflows/shiny-apps.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/shiny-apps.yaml)
+
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
 
-## About
+This repo contains an R package that includes all apps and app datasets
+assiocated with my r data blog.
 
-This package includes all apps assiocated with the r-data-science blog. Additionally, package includes the primary app datasets.
+## Run App Containers
 
-The three functions exported by this package are as follows:
+To run any of these apps as a docker container, simply the line
+corresponding to each app:
+
+```{bash}
+docker run --name appStockoutSalesImpact \
+  -p 4201:4201 --rm -dt bfatemi/stockout_sales_impact
+
+docker run --name appHouseBrandsKpis \
+  -p 4202:4202 --rm -dt bfatemi/house_brands_kpis
+
+docker run --name appEventImpactKpis \
+  -p 4203:4203 --rm -dt bfatemi/event_impact_kpis
+
+docker run --name appEmployeeSalesKpis \
+  -p 4204:4204 --rm -dt bfatemi/employee_sales_kpis
+
+docker run --name appCompareBrandImpact \
+  -p 4205:4205 --rm -dt bfatemi/compare_brand_impact
+```
+
+## Build App Images
+
+To build images for each app, download this repo and from the top level
+project directory, run the following:
+
+```{bash}
+docker-compose build
+```
+
+Once finished building, you will have an image for each of the package's
+apps on your local machine. Next, to launch all run the following:
+
+```{bash}
+docker-compose up
+```
+
+The app containers will be launched and listening on ports 4201-4205:
+
+![](images/clipboard-3822203024.png)
+
+Visit these links in your browser to interact with the apps:
+
+-   [http://localhost:4201](http://localhost:4201/){.uri}/
+-   [http://localhost:4202/](http://localhost:4201/){.uri}
+-   [http://localhost:4203/](http://localhost:4201/){.uri}
+-   [http://localhost:4204/](http://localhost:4201/){.uri}
+-   [http://localhost:4205/](http://localhost:4201/){.uri}
+
+## About R Package
+
+The three main functions exported by this package are as follows:
 
 `listBlogApps()`: Retrieves names of all apps included in this package
 
@@ -25,17 +76,17 @@ The three functions exported by this package are as follows:
 
 ------------------------------------------------------------------------
 
-## Examples
+## Examples in R
 
 #### Install Package
 
-```
+```         
 remotes::install_github("r-data-science/rblogapps")
 ```
 
 #### List Package Apps and Datasets
 
-```
+```         
 rblogapps::listBlogApps()
 rblogapps::listBlogData()
 ```
@@ -47,7 +98,8 @@ rblogapps::runBlogApp("employee_sales_kpis")
 rblogapps::runBlogApp("house_brands_kpis")
 rblogapps::runBlogApp("stockout_sales_impact")
 rblogapps::runBlogApp("event_impact_kpis")
-``` 
+rblogapps::runBlogApp("compare_brand_impact")
+```
 
 #### See App Dataset
 
@@ -56,16 +108,7 @@ rblogapps::getBlogData("employee_sales_kpis")
 rblogapps::getBlogData("house_brands_kpis")
 rblogapps::getBlogData("stockout_sales_impact")
 rblogapps::getBlogData("event_impact_kpis")
+rblogapps::getBlogData("compare_brand_impact")
 ```
-
-## Deployment
-
-To run this as a docker container, perform the following bash commands:
-
-```{bash}
-
-```
-
-------------------------------------------------------------------------
 
 Proprietary - Do Not Distribute
