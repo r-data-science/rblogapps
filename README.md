@@ -4,7 +4,7 @@
 
 [![R-CMD-check](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/test-coverage.yaml)
-[![codecov](https://codecov.io/gh/r-data-science/rnnblogapps/graph/badge.svg?token=4gg0ETS2w5)](https://codecov.io/gh/r-data-science/rblogapps)
+[![codecov](https://codecov.io/gh/r-data-science/rblogapps/graph/badge.svg?token=4gg0ETS2w5)](https://codecov.io/gh/r-data-science/rblogapps)
 [![shiny-apps](https://github.com/r-data-science/rblogapps/actions/workflows/shiny-apps.yaml/badge.svg?branch=main)](https://github.com/r-data-science/rblogapps/actions/workflows/shiny-apps.yaml)
 
 <!-- badges: end -->
@@ -58,7 +58,7 @@ The app containers will be launched and listening on ports 4201-4205:
 
 Visit these links in your browser to interact with the apps:
 
--   [http://localhost:4201/](http://localhost:4201/)
+-   [http://localhost:4201/ ](http://localhost:4201/)
 -   [http://localhost:4202/](http://localhost:4201/)
 -   [http://localhost:4203/](http://localhost:4201/)
 -   [http://localhost:4204/](http://localhost:4201/)
