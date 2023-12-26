@@ -48,6 +48,10 @@ test_that("Testing Dataset - event_impact_kpis", {
 })
 
 
+test_that("Testing Dataset - compare_brand_impact", {
+  expect_data(getBlogData("compare_brand_impact"))
+})
+
 
 # Confirm All Datasets Have Been Tested -----------------------------------
 

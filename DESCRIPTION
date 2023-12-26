@@ -44,4 +44,5 @@ Suggests:
     ggtext,
     datamods,
     DT,
-    magick
+    magick,
+    waiter
