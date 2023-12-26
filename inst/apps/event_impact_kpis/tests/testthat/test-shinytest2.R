@@ -24,7 +24,9 @@ test_that("{shinytest2} recording: event_impact_kpis", {
       expect_snapshot_value(style = "json2")
   }
 
-  app <- AppDriver$new(name = "event_impact_kpis")
+  app <- AppDriver$new(name = "event_impact_kpis",
+                       expect_values_screenshot_args = FALSE,
+                       screenshot_args = FALSE)
   expect_exports(1)
   app$set_inputs(kpi_selection = "total_sales")
   expect_exports(2)

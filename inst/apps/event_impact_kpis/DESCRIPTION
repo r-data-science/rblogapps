@@ -13,6 +13,7 @@ Imports:
   shinydashboard,
   shinydashboardPlus,
   shinycssloaders,
-  shinyWidgets
+  shinyWidgets,
+  bs4Dash
 DisplayMode: Normal
   

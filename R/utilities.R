@@ -14,6 +14,16 @@
 #' @name utilities
 NULL
 
+#' @describeIn utilities returns a mapping between apps names and ids
+#' @export
+#'
+#' @examples
+#' lookupAppIds()
+#'
+lookupAppIds <- function() {
+  return(.appids[])
+}
+
 
 #' @describeIn utilities List the names of all apps in this package
 #' @export

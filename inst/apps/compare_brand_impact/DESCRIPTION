@@ -1,0 +1,15 @@
+Title: Comparison of Training Impact by Brand
+Author: Bobby Fatemi
+Type: Shiny
+Version: 0.1
+Imports:
+  shiny,
+  shinyWidgets,
+  shinydashboard,
+  shinydashboardPlus,
+  waiter,
+  stringr,
+  lubridate,
+  data.table,
+  scales
+DisplayMode: Normal

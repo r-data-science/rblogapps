@@ -3,6 +3,7 @@
 export(getBlogData)
 export(listBlogApps)
 export(listBlogData)
+export(lookupAppIds)
 export(runBlogApp)
 importFrom(data.table,as.data.table)
 importFrom(fs,dir_ls)
