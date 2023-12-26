@@ -145,10 +145,19 @@ server <- function(input, output) {
             has_brand_training,
             category
         )]
-        updateSelectInput(
-            inputId = "cat_selection",
-            choices = tmp[N > 5, .N, category][N > 1, category]
-        )
+        x <- tmp[N > 5, .N, category][N > 1, category]
+        if (length(x) == 0) {
+            shinyWidgets::show_alert(
+                title = "Oops!",
+                text = "Brand has no common category products across the selected retailer groups",
+                type = "error"
+            )
+        } else {
+            updateSelectInput(
+                inputId = "cat_selection",
+                choices = x
+            )
+        }
     })
 
     r_stats <- eventReactive(input$cat_selection, {

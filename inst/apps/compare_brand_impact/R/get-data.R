@@ -59,9 +59,17 @@ getStats <- function(DT, brand, cat) {
 }
 
 
-
-# ## Testing
-# start_date <- "2022-12-15"
-# stop_date <- "2023-09-15"
-# yes <- sample(paste0("Org ", 1:5), 3)
-# no <- sample(paste0("Org ", 6:10), 3)
+#
+# # ## Testing
+# start_date <- "2022-12-25"
+# stop_date <- "2023-09-25"
+# yes <- paste0("Org ", c(1, 3))
+# no <- paste0("Org ", c(2, 8))
+#
+# appDT <- getAppData(yes, no, start_date, stop_date)
+#
+# x <- appDT[brand_name == "JEETER", .N, .(
+#   has_brand_training,
+#   category
+# )][N > 5, .N, category][N > 1, category]
+#

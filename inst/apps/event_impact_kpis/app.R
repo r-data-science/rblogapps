@@ -18,7 +18,7 @@ library(shinydashboardPlus)
 library(shinycssloaders)
 library(shinyWidgets)
 library(rblogapps)
-
+library(bs4Dash)
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(
