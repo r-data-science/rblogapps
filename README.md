@@ -54,15 +54,15 @@ docker-compose up
 
 The app containers will be launched and listening on ports 4201-4205:
 
-![](images/clipboard-3822203024.png)
+![](inst/www/images/clipboard-3822203024.png)
 
 Visit these links in your browser to interact with the apps:
 
--   [http://localhost:4201](http://localhost:4201/){.uri}/
--   [http://localhost:4202/](http://localhost:4201/){.uri}
--   [http://localhost:4203/](http://localhost:4201/){.uri}
--   [http://localhost:4204/](http://localhost:4201/){.uri}
--   [http://localhost:4205/](http://localhost:4201/){.uri}
+-   [http://localhost:4201](http://localhost:4201/)
+-   [http://localhost:4202/](http://localhost:4201/)
+-   [http://localhost:4203/](http://localhost:4201/)
+-   [http://localhost:4204/](http://localhost:4201/)
+-   [http://localhost:4205/](http://localhost:4201/)
 
 ## About R Package
 
